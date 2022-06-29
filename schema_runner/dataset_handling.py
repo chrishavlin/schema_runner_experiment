@@ -41,7 +41,7 @@ class DataStore:
     def __init__(self):
         self.all_data = {}
 
-    def store(self, fn: str, dataset_name: str = None, load_method='load'):
+    def store(self, fn: str, dataset_name: str = None):
         """
         A function to track all dataset.
         Stores dataset name, or if no name is provided,
@@ -50,7 +50,7 @@ class DataStore:
         dataset_name = self.validate_name(fn, dataset_name)
 
         if dataset_name not in self.all_data:
-            self.all_data[dataset_name] = DatasetContext(fn, load_method=load_method)
+            self.all_data[dataset_name] = DatasetContext(fn)
 
     def validate_name(self, fn: str, dataset_name: str = None):
         if dataset_name is None:

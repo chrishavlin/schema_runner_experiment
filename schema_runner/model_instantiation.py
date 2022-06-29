@@ -131,8 +131,9 @@ class YTGeneric(YTRunner):
 class Visualizations(YTRunner):
 
     def _sanitize_viz(self, yt_viz):
-        # want to return an object with no references to the underlying ds
-        return yt_viz.export_to_mpl_figure((1, 1))
+        # if objects contain references to a ds, that might be problematic when
+        # loading and executing a single ds at a time?
+        return yt_viz
 
     def process_pydantic(self, pydantic_instance: analysis_schema.data_classes.Visualizations, ds=None):
         generic_runner = YTGeneric()
