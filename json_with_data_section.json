@@ -1,0 +1,67 @@
+{
+    "$schema": "/home/chavlin/src/yt_general/yt_schema/analysis_schema/analysis_schema/yt_analysis_schema.json",
+    "Data": [
+             {
+                "FileName": "IsolatedGalaxy/galaxy0030/galaxy0030",
+                "DatasetName": "IG"
+              }
+             ],
+    "Plot": [
+        {
+          "ProjectionPlot": {
+            "Dataset": [
+              {
+                "FileName": "IsolatedGalaxy/galaxy0030/galaxy0030",
+                "DatasetName": "IG"
+              },
+              {
+                "FileName": "enzo_tiny_cosmology/DD0000/DD0000",
+                "DatasetName": "Enzo"
+              }
+            ],
+            "Axis":"y",
+            "FieldNames": {
+              "field": "density",
+              "field_type": "gas"
+            },
+            "WeightFieldName": {
+              "field": "temperature",
+              "field_type": "gas"
+            }
+          }
+        },
+        {
+          "SlicePlot": {
+            "Dataset": [
+              {
+                "FileName": "IsolatedGalaxy/galaxy0030/galaxy0030",
+                "DatasetName": "IG"
+              },
+              {
+                "FileName": "enzo_tiny_cosmology/DD0000/DD0000",
+                "DatasetName": "Enzo"
+              }
+            ],
+            "Axis":"y",
+            "FieldNames": {
+              "field": "density",
+              "field_type": "gas"
+            }
+          }
+        },
+        {
+          "SlicePlot": {
+            "Dataset": [
+              { "FileName": "IsolatedGalaxy/galaxy0030/galaxy0030",
+                "DatasetName": "IG"}
+            ],
+            "Axis":"y",
+            "FieldNames": {
+              "field": "density",
+              "field_type": "gas"
+            },
+            "DataSource": {"sphere": {"Center": [0.5, 0.5, 0.5], "Radius": 0.25}}
+          }
+        }
+      ]
+}
