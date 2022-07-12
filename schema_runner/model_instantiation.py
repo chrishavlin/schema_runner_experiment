@@ -22,7 +22,8 @@ class FieldNames(YTRunner):
 
 class Dataset(YTRunner):
     def process_pydantic(self, pydantic_instance: analysis_schema.data_classes.Dataset, ds=None):
-        # always return the instantiated dataset
+        # always return the instantiated dataset. This is a somewhat hacky work-around as it
+        # relies on the correct dataset being instantiated, see jswon_workflow.MainWorkflow.run_all
         return ds
 
 

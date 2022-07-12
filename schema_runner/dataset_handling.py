@@ -64,8 +64,7 @@ class DataStore:
         dataset_name: str,
     ):
         """
-        Instantiates a dataset and stores it in a separate dictionary.
-        Returns a dataset context
+        returns a dataset context
         """
         if dataset_name in self.all_data:
             return self.all_data[dataset_name]

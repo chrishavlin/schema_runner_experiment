@@ -69,7 +69,12 @@ class MainWorkflow:
                     for dsname in ds_list:
                         # can specify multiple datasets to signal that a workflow should
                         # be run for each dataset, so duplicate the workflow for each
-                        # dataset
+                        # dataset. Would probably be better to modify the duplicated
+                        # workflows so that internal dataset references are
+                        # correct... but right now this does not do that and
+                        # during execution any dataset references are essentially
+                        # short-circuited to use whatever dataset is instantiated
+                        # at the time of execution (see run_all()).
                         if dsname not in workflows_by_ds:
                             workflows_by_ds[dsname] = []
                         workflows_by_ds[dsname].append(Workflow(plot, dsname))
@@ -87,6 +92,8 @@ class MainWorkflow:
         for dsname, workflows in self.workflows_by_dataset.items():
             ds_context = self.data_store.retrieve(dsname)
             with ds_context.load() as ds:
+                # this ds gets passed down to all pydantic runner objects and
+                # will get used if a dataset object is encountered.
                 for workflow in workflows:
                     output.append(workflow.run(ds))
 
